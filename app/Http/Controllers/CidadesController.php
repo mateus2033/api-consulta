@@ -10,9 +10,9 @@ use Illuminate\Http\Response;
 
 class CidadesController extends Controller
 {
-    public function listarCidades(ListarCidadesFormRequest $cidadeRequest, ListarCidadesService $lisarCidadesService)
+    public function listarCidades(ListarCidadesFormRequest $cidadeRequest, ListarCidadesService $listarCidadesService)
     {
-        $response = $lisarCidadesService->execute(
+        $response = $listarCidadesService->execute(
             input: new ListarCidadesInputDTO(
                 nome: $cidadeRequest->nome,
                 page: $cidadeRequest->page,

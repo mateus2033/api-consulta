@@ -7,6 +7,8 @@ use App\DTO\Imput\Cidade\ListarCidadesInputDTO;
 use App\DTO\Output\Cidade\ListarCidadesOutputDTO;
 use App\Interfaces\IServices\Cidade\IListarCidadesService;
 use App\Repositories\Cidade\CidadeRepository;
+use Exception;
+use Illuminate\Http\Response;
 
 class ListarCidadesService implements IListarCidadesService
 {
@@ -26,6 +28,10 @@ class ListarCidadesService implements IListarCidadesService
                 $input->perpage,
                 $input->paginate
             ); 
+
+            if($cidades->isEmpty()) {
+                throw new Exception("Cidade não encontrada.", Response::HTTP_NO_CONTENT);
+            }
     
             return new ListarCidadesOutputDTO(
                 cidades: $cidades
