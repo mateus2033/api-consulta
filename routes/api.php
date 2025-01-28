@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{
+    CidadesController,
+    UserController
+};
 use Illuminate\Support\Facades\Route;
 
 Route::group([], function () {
@@ -14,6 +17,15 @@ Route::middleware(['auth:sanctum'])
             ->name('user.')
             ->group(function () {
                 Route::get('/', [UserController::class, 'me'])->name('me');
+            });
+
+});
+
+Route::group([], function () {
+        Route::prefix('cidades')
+            ->name('cidades.')
+            ->group(function () {
+                Route::get('/', [CidadesController::class, 'listarCidades'])->name('cidades');
             });
 
 });
