@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\{
     CidadesController,
-    UserController
+    UserController,
+    MedicosController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -11,21 +12,20 @@ Route::group([], function () {
     Route::post('/cadastrar',[UserController::class, 'signUp'])->name('sign-up');
 });
 
-Route::middleware(['auth:sanctum'])
+Route::prefix('user')
+    ->name('user.')
     ->group(function () {
-        Route::prefix('user')
-            ->name('user.')
-            ->group(function () {
-                Route::get('/', [UserController::class, 'me'])->name('me');
-            });
+        Route::get('/', [UserController::class, 'me'])->name('me')->middleware(['auth:sanctum']);
+    });
 
-});
+Route::prefix('cidades')
+    ->name('cidades.')
+    ->group(function () {
+        Route::get('/', [CidadesController::class, 'listarCidades'])->name('listar.cidades');
+    });
 
-Route::group([], function () {
-        Route::prefix('cidades')
-            ->name('cidades.')
-            ->group(function () {
-                Route::get('/', [CidadesController::class, 'listarCidades'])->name('cidades');
-            });
-
-});
+Route::prefix('medicos')
+    ->name('medicos.')
+    ->group(function () {
+        Route::get('/', [MedicosController::class, 'listarCidades'])->name('listar.cidades');
+    });
