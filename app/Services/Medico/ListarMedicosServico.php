@@ -2,7 +2,7 @@
 
 namespace App\Services\Medico;
 
-use App\DTO\Imput\Paciente\ListarMedicosInputDTO;
+use App\DTO\Imput\Medico\ListarMedicosInputDTO;
 use App\DTO\Output\Medico\ListarMedicosOutputDTO;
 use App\Exceptions\CustomException;
 use App\Interfaces\IServices\Medico\IListarMedicosServico;

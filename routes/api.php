@@ -27,5 +27,6 @@ Route::prefix('cidades')
 Route::prefix('medicos')
     ->name('medicos.')
     ->group(function () {
-        Route::get('/', [MedicosController::class, 'listarCidades'])->name('listar.cidades');
+        Route::get('/', [MedicosController::class, 'listarMedicos'])->name('listar.medicos');
+        Route::post('/', [MedicosController::class, 'adicioarMedico'])->name('adicioar.medico')->middleware(['auth:sanctum']);
     });

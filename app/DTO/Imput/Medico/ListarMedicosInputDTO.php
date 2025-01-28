@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTO\Imput\Paciente;
+namespace App\DTO\Imput\Medico;
 
 class ListarMedicosInputDTO 
 {
