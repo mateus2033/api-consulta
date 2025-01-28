@@ -4,7 +4,7 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SiginUserRequest extends FormRequest
+class SiginUpUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class SiginUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email|',
+            'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6'
         ];
     }
@@ -33,6 +33,7 @@ class SiginUserRequest extends FormRequest
             'required' => 'O email é obrigatório.',
             'string' => 'Esse campo deve ser somente strings.',
             'email' => 'Email inválido.',
+            'unique' => 'Email já cadastrado.',
             'password.min' => 'A senha deve conter no mínimo 6 caracteres.'
         ];
     }
