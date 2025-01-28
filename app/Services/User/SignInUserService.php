@@ -25,7 +25,7 @@ class SignInUserService implements ISignInUserService
         $this->transaction = $transaction;
     }
 
-    public function execute(SignInUserInputDTO $input)
+    public function execute(SignInUserInputDTO $input): SignInUserOutputDTO
     {
         try {
             $user = $this->userRepository->getUserByEmail(

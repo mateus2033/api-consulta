@@ -23,7 +23,7 @@ class SignUpUserService implements ISignUpUserService
         $this->transaction = $transaction;
     }
 
-    public function execute(SignUpUserInputDTO $input)
+    public function execute(SignUpUserInputDTO $input): SignUpUserOutputDTO
     {
         try {
             $user = $this->userRepository->create([
