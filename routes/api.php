@@ -22,6 +22,7 @@ Route::prefix('cidades')
     ->name('cidades.')
     ->group(function () {
         Route::get('/', [CidadesController::class, 'listarCidades'])->name('listar.cidades');
+        Route::get('/{id_cidade}/medicos', [CidadesController::class, 'listarMedicos'])->name('listar.medicos.cidades');
     });
 
 Route::prefix('medicos')
