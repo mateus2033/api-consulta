@@ -18,4 +18,14 @@ class Consulta extends Model
         'paciente_id',
         'data'
     ];
+
+    public function medico()
+    {
+        return $this->belongsTo(Medico::class, 'medico_id', 'id');
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'paciente_id', 'id');
+    }
 }

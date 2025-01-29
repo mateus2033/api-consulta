@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\{
     CidadesController,
+    ConsultasController,
     UserController,
     MedicosController
 };
@@ -30,4 +31,10 @@ Route::prefix('medicos')
     ->group(function () {
         Route::get('/', [MedicosController::class, 'listarMedicos'])->name('listar.medicos');
         Route::post('/', [MedicosController::class, 'adicioarMedico'])->name('adicioar.medico')->middleware(['auth:sanctum']);
+
+        Route::prefix('consulta')
+            ->name('consulta.')
+            ->group(function () {
+                Route::post('/', [ConsultasController::class, 'agendarConsulta'])->name('agendar.consulta')->middleware(['auth:sanctum']);
+        });
     });

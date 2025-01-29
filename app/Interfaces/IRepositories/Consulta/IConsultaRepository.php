@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface IConsultaRepository 
 {
-    public function list(int $page, int $perpage, bool $paginate): Collection;
-    public function create(array $data): Consulta;
+    public function list(int $page, int $perpage, bool $paginate, array $columns = ['*'], array $relationships = []);
+    public function create(array $data);
 }
