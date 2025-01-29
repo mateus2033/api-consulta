@@ -4,7 +4,7 @@ namespace App\Http\Resources\Paciente;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdicionarPacienteResource extends JsonResource
+class AtualizarPacienteResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,7 @@ class AdicionarPacienteResource extends JsonResource
             'nome' => $this->nome, 
             'cpf' => $this->cpf, 
             'celular' => $this->celular,
-            'created_at' => $this->created_at
+            'updated_at' => $this->updated_at
         ];
     } 
 }

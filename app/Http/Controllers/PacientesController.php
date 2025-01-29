@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\DTO\Imput\Paciente\AdicionarPacienteInputDTO;
-use App\Http\Requests\Paciente\AdicionarPacienteFormRequest;
-use App\Http\Resources\Paciente\AdicionarPacienteResource;
-use App\Services\Paciente\AdicionarPacienteService;
 use Illuminate\Http\Response;
+
+use App\DTO\Imput\Paciente\{
+    AtualizarPacienteInputDTO,
+    AdicionarPacienteInputDTO
+};
+
+use App\Http\Requests\Paciente\{
+    AdicionarPacienteFormRequest,
+    AtualizarPacienteFormRequest
+};
+
+use App\Services\Paciente\{
+    AtualizarPacienteService,
+    AdicionarPacienteService
+};
+use App\Http\Resources\Paciente\{
+    AdicionarPacienteResource,
+    AtualizarPacienteResource
+};
 
 class PacientesController extends Controller 
 {
@@ -23,5 +38,20 @@ class PacientesController extends Controller
         return (new AdicionarPacienteResource($response->paciente))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function atualizarPaciente(AtualizarPacienteFormRequest $pacienteRequest, $id_paciente, AtualizarPacienteService $atualizarService)
+    {
+        $response = $atualizarService->execute(
+            input: new AtualizarPacienteInputDTO(
+                id_paciente: (int) $id_paciente,
+                nome: $pacienteRequest->nome,
+                celular: $pacienteRequest->celular
+            )
+        );
+
+        return (new AtualizarPacienteResource($response->paciente))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 }

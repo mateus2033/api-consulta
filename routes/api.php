@@ -45,5 +45,5 @@ Route::prefix('pacientes')
     ->name('pacientes.')
     ->group(function () {
         Route::post('/', [PacientesController::class, 'adicionarPaciente'])->name('adidionar.paciente')->middleware(['auth:sanctum']);
-        //Route::put('/{id_paciente}', [PacientesController::class, 'atualizarPaciente'])->name('atualizar.paciente')->middleware(['auth:sanctum']);
+        Route::put('/{id_paciente}', [PacientesController::class, 'atualizarPaciente'])->name('atualizar.paciente')->middleware(['auth:sanctum']);
 });
