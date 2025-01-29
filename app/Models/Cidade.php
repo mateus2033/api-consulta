@@ -17,4 +17,9 @@ class Cidade extends Model
         'nome',
         'estado'
     ];
+
+    public function medicos()
+    {
+        return $this->hasMany(Medico::class);
+    }
 }
