@@ -4,21 +4,25 @@ namespace App\Http\Controllers;
 
 use App\DTO\Imput\Medico\{
     AdicionarMedicosInputDTO,
-    ListarMedicosInputDTO
+    ListarMedicosInputDTO,
+    ListarPacientesInputDTO
 };
     
 use App\Http\Requests\Medico\{
     AdicionarMedicoFormRequest,
-    ListarMedicosFormRequest
+    ListarMedicosFormRequest,
+    ListarPacientesFormRequest
 };
 use App\Http\Resources\Medico\{
     AdicionarMedicoResource,
-    ListarMedicosRerouce
+    ListarMedicosRerouce,
+    ListarPacientesResource
 };
 
 use App\Services\Medico\{
     AdicionarMedicosService,
-    ListarMedicosServico
+    ListarMedicosServico,
+    ListarPacientesService
 };
 use Illuminate\Http\Response;
 
@@ -53,5 +57,23 @@ class MedicosController extends Controller
         return (new AdicionarMedicoResource($response))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function listarPacientes(ListarPacientesFormRequest $pacienteRequest, $id_medico, ListarPacientesService $pacienteService)
+    {
+        $response = $pacienteService->execute(
+            input: new ListarPacientesInputDTO(
+                nome: $pacienteRequest->nome,
+                apenas_agendadas: $pacienteRequest->apenas_agendadas,
+                id_medico: (int) $id_medico,
+                page: $pacienteRequest->page,
+                perpage: $pacienteRequest->perpage,
+                paginate: $pacienteRequest->paginate
+            )
+        );
+
+        return (new ListarPacientesResource($response))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 }
