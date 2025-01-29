@@ -9,4 +9,14 @@ use App\Repositories\Base\BaseRepository;
 class PacienteRepository extends BaseRepository implements IPacienteRepository
 {
     protected $modelClass = Paciente::class;
+
+    public function findByCpf(string $cpf)
+    {
+        return $query = $this
+            ->getModel()
+            ->newQuery()
+            ->where('cpf', $cpf)
+            ->get()
+            ->first();
+    }
 }
