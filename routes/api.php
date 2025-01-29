@@ -4,7 +4,8 @@ use App\Http\Controllers\{
     CidadesController,
     ConsultasController,
     UserController,
-    MedicosController
+    MedicosController,
+    PacientesController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::prefix('medicos')
     ->group(function () {
         Route::get('/', [MedicosController::class, 'listarMedicos'])->name('listar.medicos');
         Route::post('/', [MedicosController::class, 'adicioarMedico'])->name('adicioar.medico')->middleware(['auth:sanctum']);
+        Route::get('/{id_medico}/pacientes', [MedicosController::class, 'listarPacientes'])->name('listar.pacientes')->middleware(['auth:sanctum']);
 
         Route::prefix('consulta')
             ->name('consulta.')

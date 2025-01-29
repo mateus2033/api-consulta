@@ -17,10 +17,10 @@ class AgendarConsultaResource extends JsonResource
         return [
             'id' => $this->id,
             'data' => $this->data,
+            'medico_id' => $this->medico_id,
+            'paciente_id' => $this->paciente_id,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
-            'medico_id' => $this->medico,
-            'paciente_id' => $this->paciente
         ];
     } 
 }
