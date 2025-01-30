@@ -36,7 +36,7 @@ class CidadeRepository extends BaseRepository implements ICidadeRepository
             ->medicos()
             ->join('cidades', 'medicos.cidade_id', 'cidades.id') 
             ->orderBy('nome')
-            ->select('medicos.id', 'medicos.nome', 'medicos.especialidade', 'cidades.nome as cidade')
+            ->select('medicos.id', 'medicos.nome', 'medicos.especialidade', 'medicos.cidade_id')
             ->when($nome, function ($query) use ($nome) {
                 return $query->where('nome', 'like', '%' . $nome . '%');
             });

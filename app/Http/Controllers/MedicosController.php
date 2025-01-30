@@ -38,10 +38,10 @@ class MedicosController extends Controller
                 paginate: $medicoRequest->paginate,
             )
         );
-
-        return (new ListarMedicosRerouce($response))
+        
+        return ListarMedicosRerouce::collection($response->medicos)
             ->response()
-            ->setStatusCode(Response::HTTP_OK);
+            ->setStatusCode(Response::HTTP_OK);  
     }
 
     public function adicioarMedico(AdicionarMedicoFormRequest $medicoRequest, AdicionarMedicosService $adicionarMedicosServico)
@@ -54,7 +54,7 @@ class MedicosController extends Controller
             )
         );
 
-        return (new AdicionarMedicoResource($response))
+        return (new AdicionarMedicoResource($response->medico))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
     }
@@ -73,7 +73,7 @@ class MedicosController extends Controller
         );
 
         return (new ListarPacientesResource($response))
-            ->response()
-            ->setStatusCode(Response::HTTP_OK);
+           ->response()
+           ->setStatusCode(Response::HTTP_OK);
     }
 }

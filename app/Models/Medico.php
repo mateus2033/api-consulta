@@ -26,6 +26,6 @@ class Medico extends Model
 
     public function pacientes()
     {
-        return $this->belongsToMany(Paciente::class, 'consultas', 'medico_id', 'paciente_id')->withPivot('id','data')->as('consulta'); ;
+        return $this->belongsToMany(Paciente::class, 'consultas', 'medico_id', 'paciente_id')->withPivot('id','data','created_at','updated_at','deleted_at')->as('consulta');
     }
 }

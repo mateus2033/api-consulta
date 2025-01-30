@@ -48,13 +48,12 @@ class ListarMedicosTest extends TestCase
         $this->execute($payload)
             ->assertStatus(Response::HTTP_OK)
             ->assertExactJson([
-                "data" => [[
-                    [
-                        "especialidade" => $medico->especialidade,
-                        "id" => $medico->id,
-                        "nome" => $medico->nome
-                    ]
-                ]]
+                [
+                    "especialidade" => $medico->especialidade,
+                    "id" => $medico->id,
+                    "nome" => $medico->nome,
+                    "cidade_id" => $medico->cidade_id
+                ]
             ]);
     
         $this->assertDatabaseHas('medicos',['nome' => $medico->nome]); 

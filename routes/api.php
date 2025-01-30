@@ -37,6 +37,7 @@ Route::prefix('medicos')
         Route::prefix('consulta')
             ->name('consulta.')
             ->group(function () {
+                Route::get('/{id_paciente}/pacientes', [ConsultasController::class, 'listarConsultas'])->name('listar.consultas')->middleware(['auth:sanctum']);
                 Route::post('/', [ConsultasController::class, 'agendarConsulta'])->name('agendar.consulta')->middleware(['auth:sanctum']);
         });
     });

@@ -14,14 +14,15 @@ class AdicionarMedicoResource extends JsonResource
     */
     public function toArray($request)
     {
+        JsonResource::withoutWrapping();
         return [
-            'nome' =>  $this->nome,
-            'especialidade' => $this->especialidade,  
-            'cidade' => [
-                'id' => $this->cidade->id,
-                'nome' => $this->cidade->nome,
-                'estado' => $this->cidade->estado  
-            ]
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'especialidade' => $this->especialidade,
+            'cidade_id' => $this->cidade_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at
         ];
     } 
 }

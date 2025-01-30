@@ -14,8 +14,13 @@ class ListarMedicosRerouce extends JsonResource
      */
     public function toArray($request)
     {
+        JsonResource::withoutWrapping();
+
         return [
-            $this->medicos
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'especialidade' => $this->especialidade,
+            'cidade_id' => $this->cidade_id
         ];
     } 
 }

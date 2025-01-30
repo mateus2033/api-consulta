@@ -14,8 +14,12 @@ class ListarCidadesRerouce extends JsonResource
      */
     public function toArray($request)
     {
+        JsonResource::withoutWrapping();
+        
         return [
-            $this->cidades
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'estado' => $this->estado
         ];
     }
 }
