@@ -9,6 +9,6 @@ class MeUserOutputDTO
     public function __construct(
         public string $id,
         public string $email,
-        public string $created_at
+        public ?string $created_at
     ) {}
 }
