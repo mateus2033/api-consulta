@@ -20,4 +20,22 @@ class ConsultaRepository extends BaseRepository implements IConsultaRepository
             ->get()
             ->first();
     }
+
+    public function findConsultaWithRelationships(?int $id_paciente, ?int $page, ?int $perpage, ?bool $paginate)
+    {
+        $query = $this
+            ->getModel()
+            ->newQuery()
+            ->with(['medico','paciente'])
+            ->where('paciente_id', $id_paciente);
+
+        return $this->mountQuery(
+            $query, 
+            $perpage, 
+            $columns = ['*'], 
+            $pageName = null, 
+            $page, 
+            $paginate
+        ); 
+    }
 }

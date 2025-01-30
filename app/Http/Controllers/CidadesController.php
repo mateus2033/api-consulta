@@ -37,9 +37,9 @@ class CidadesController extends Controller
             )
         );
 
-        return (new ListarCidadesRerouce($response))
+        return ListarCidadesRerouce::collection($response->cidades)
             ->response()
-            ->setStatusCode(Response::HTTP_OK);
+            ->setStatusCode(Response::HTTP_OK);  
     }
 
     public function listarMedicos(ListarMedicosFormRequest $medicosRequest, ?string $id_cidade, ListarMedicosService $listarMedicosService)
@@ -54,7 +54,7 @@ class CidadesController extends Controller
             )
         );
 
-        return (new ListarMedicosServiceResource($response))
+        return ListarMedicosServiceResource::collection($response->medicos)
             ->response()
             ->setStatusCode(Response::HTTP_OK);
     }

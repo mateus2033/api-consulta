@@ -14,8 +14,7 @@ class ListarPacientesResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            $this->pacientes
-        ];
+        JsonResource::withoutWrapping();
+        return $this->pacientes;
     } 
 }

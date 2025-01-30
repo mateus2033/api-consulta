@@ -33,10 +33,7 @@ class AdicionarMedicosService implements IAdicionarMedicosService
     
             $this->transaction->commit();
             return new AdicionarMedicosOutputDTO(
-                id: $medico->id,
-                nome: $medico->nome,
-                especialidade: $medico->especialidade,
-                cidade: $medico->cidade
+                medico: $medico,
             );
         } catch (\Throwable $error) {
             $this->transaction->rollback();

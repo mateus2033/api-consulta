@@ -27,10 +27,8 @@ class SiginUserTest extends TestCase
         $this->execute($payload)
             ->assertStatus(Response::HTTP_CREATED)
             ->assertExactJson([
-                "data" => [
                     "id" => "1",
                     "email" => "eric.bahamas@gmail.com" 
-                ]
             ]); 
     }
 }

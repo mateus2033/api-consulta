@@ -14,12 +14,15 @@ class AdicionarPacienteResource extends JsonResource
      */
     public function toArray($request)
     {
+        JsonResource::withoutWrapping();
         return [
             'id' => $this->id, 
             'nome' => $this->nome, 
             'cpf' => $this->cpf, 
             'celular' => $this->celular,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at
         ];
     } 
 }

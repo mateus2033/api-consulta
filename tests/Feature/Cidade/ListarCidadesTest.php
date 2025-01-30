@@ -53,18 +53,16 @@ class ListarCidadesTest extends TestCase
         $this->execute($payload)
             ->assertStatus(Response::HTTP_OK)
             ->assertExactJson([
-                "data" => [[
-                    [
-                        "estado" => $cidades_primeira->estado,
-                        "id" => $cidades_primeira->id,
-                        "nome" => $cidades_primeira->nome
-                    ],
-                    [
-                        "estado" => $cidades_segunda->estado,
-                        "id" => $cidades_segunda->id,
-                        "nome" => $cidades_segunda->nome
-                    ]
-                ]]
+                [
+                    "estado" => $cidades_primeira->estado,
+                    "id" => $cidades_primeira->id,
+                    "nome" => $cidades_primeira->nome
+                ],
+                [
+                    "estado" => $cidades_segunda->estado,
+                    "id" => $cidades_segunda->id,
+                    "nome" => $cidades_segunda->nome
+                ]      
             ]);
     
         $this->assertDatabaseHas('cidades',['nome' => $cidades_primeira->nome]); 

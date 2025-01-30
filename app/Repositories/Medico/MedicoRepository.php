@@ -15,7 +15,7 @@ class MedicoRepository extends BaseRepository implements IMedicoRepository
     {  
         $query = $this->getModel()->newQuery()
             ->orderBy('nome')
-            ->select('id','nome','especialidade')
+            ->select('id','nome','especialidade','cidade_id')
             ->when($nome, function ($query) use ($nome) {
                 return $query->where('nome', 'like', '%' . $nome . '%');
             });
