@@ -1,13 +1,12 @@
-Iniciando o Projeto
+<p align="center">Projeto Consultar</p>
 
-1. Iniciar o ambiente Docker com Sail
-Dentro da pasta do projeto, execute o seguinte comando para iniciar o projeto com o Docker:
+# Iniciando o projeto
 
- * ./vendor/bin/sail up => Este comando irá iniciar os containers necessários para o ambiente de desenvolvimento do projeto.
+<p> Execute o comando abaixo dentro da pasta do projeto </p>
 
-2. Acessar a imagem Docker
-Acesse o container do projeto sail-8/app e execute os comandos para configurar as dependências e o banco de dados.
+    * ./vendor/bin/sail up
 
- * composer install - instalar as dependencias do projeto.
- * php artisan migrate:fresh --seed  - inicializar o banco da dados do projeto.
+<p>Acesse a imagem do projeto <strong> sail-8/app </strong> e execute os comandos abaixo</p>
 
+    * composer install 
+    * php artisan migrate:fresh --seed
