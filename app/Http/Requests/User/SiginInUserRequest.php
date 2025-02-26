@@ -31,7 +31,7 @@ class SiginInUserRequest extends FormRequest
     {
         return [
             'email.required' => 'O email é obrigatório.',
-            'password.required' => 'A senha é obrigatório.',
+            'password.required' => 'A senha é obrigatória.',
             'string' => 'Esse campo deve ser somente strings.',
             'email' => 'Email inválido.',
             'password.min' => 'A senha deve conter no mínimo 6 caracteres.'
