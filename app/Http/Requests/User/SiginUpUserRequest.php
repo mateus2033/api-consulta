@@ -30,7 +30,8 @@ class SiginUpUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'required' => 'O email é obrigatório.',
+            'email.required' => 'O email é obrigatório.',
+            'password.required' => 'A senha é obrigatória.',
             'string' => 'Esse campo deve ser somente strings.',
             'email' => 'Email inválido.',
             'unique' => 'Email já cadastrado.',
