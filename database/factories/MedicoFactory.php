@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Cidade;
 use App\Models\Medico;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MedicoFactory extends Factory 
@@ -26,6 +27,7 @@ class MedicoFactory extends Factory
             'nome' => $this->faker->name(),
             'especialidade' => $this->faker->randomElement(['Cardiologista','Ortopedista','Dermatologista','Otorrinolaringologista','Pediatra','Nefrologista']),
             'cidade_id' => Cidade::exists() ? Cidade::get()->pluck('id')->first() : Cidade::factory()->create()->id,
+            'user_id' => User::exists() ? User::get()->pluck('id')->first() : User::factory()->create()->id
         ];
     }
 }

@@ -16,6 +16,7 @@ class Paciente extends Model
         'id',
         'nome',
         'cpf',
-        'celular'
+        'celular',
+        'user_id'
     ];
 }

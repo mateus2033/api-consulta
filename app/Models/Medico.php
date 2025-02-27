@@ -16,7 +16,8 @@ class Medico extends Model
         'id',
         'nome',
         'especialidade',
-        'cidade_id'
+        'cidade_id',
+        'user_id'
     ];
 
     public function cidade()

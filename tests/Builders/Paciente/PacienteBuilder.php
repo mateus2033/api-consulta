@@ -32,6 +32,12 @@ class PacienteBuilder
         return $this;
     }
 
+    public function setUserId($user_id = null): self
+    {
+        $this->attributes['user_id'] = $user_id;
+        return $this;
+    }
+
     public function create($quantity = null)
     {
         return Paciente::factory($quantity)->create($this->attributes);
