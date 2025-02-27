@@ -20,6 +20,12 @@ class UserBuilder
         return $this;
     }
 
+    public function setType($type = null): self
+    {
+        $this->attributes['type'] = $type;
+        return $this;
+    }
+
     public function setPassword($password = null): self
     {
         $this->attributes['password'] = $password;

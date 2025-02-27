@@ -18,7 +18,9 @@ class SiginUpUserRequest extends FormRequest
     {
         return [
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6'
+            'type' => 'required|in:DOCTOR,CLIENT',
+            'password' => 'required|string|min:6',
+            'confirmPassword' => 'required|string|same:password'
         ];
     }
 
@@ -30,11 +32,30 @@ class SiginUpUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'required' => 'O email é obrigatório.',
-            'string' => 'Esse campo deve ser somente strings.',
-            'email' => 'Email inválido.',
-            'unique' => 'Email já cadastrado.',
-            'password.min' => 'A senha deve conter no mínimo 6 caracteres.'
+            'required' => 'O campo :attribute é obrigatório.',
+            'string' => 'O campo :attribute deve ser um texto.',
+            'email' => 'O campo :attribute deve ser um e-mail válido.',
+            'unique' => 'O :attribute já está cadastrado.',
+            'min' => 'O campo :attribute deve ter no mínimo :min caracteres.',
+            'max' => 'O campo :attribute deve ter no máximo :max caracteres.',
+            'same' => 'O campo :attribute deve ser igual ao campo :other.',
+            'password.min' => 'A senha deve ter no mínimo 6 caracteres.',
+            'confirmPassword.same' => 'A confirmação da senha não coincide com a senha.',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'email' => 'e-mail',
+            'type' => 'tipo',
+            'password' => 'senha',
+            'confirmPassword' => 'confirmação da senha',
         ];
     }
 }
