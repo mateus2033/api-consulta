@@ -6,14 +6,16 @@ class SignUpUserInputDTO
 {
     public function __construct(
         public string $email,
-        public string $password,
+        public string $type,
+        public string $password
     ) {}
 
     public function toArray(): array
     {
         return [
             'email' => $this->email,
-            'password' => $this->password,
+            'type' => $this->type,
+            'password' => $this->password
         ];
     }
 }

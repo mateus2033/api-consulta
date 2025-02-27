@@ -47,7 +47,8 @@ class UserController extends Controller
         $response = $serviceUser->execute(
             input: new SignUpUserInputDTO(
                 email: $requestUser->email,
-                password: $requestUser->password,
+                type: $requestUser->type,
+                password: $requestUser->password
             )
         );    
 

@@ -6,6 +6,7 @@ class SignUpUserOutputDTO
 {
     public function __construct(
         public string $id,
+        public string $type,
         public string $email
     ) {}
 }

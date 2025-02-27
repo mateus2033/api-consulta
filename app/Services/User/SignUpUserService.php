@@ -24,16 +24,18 @@ class SignUpUserService implements ISignUpUserService
     }
 
     public function execute(SignUpUserInputDTO $input): SignUpUserOutputDTO
-    {
+    {   
         try {
             $user = $this->userRepository->create([
                 'email' => $input->email,
+                'type' => $input->type,
                 'password' => Hash::make($input->password)
             ]);
     
             $this->transaction->commit();
             return new SignUpUserOutputDTO(
                 id: $user->id,
+                type: $user->type,
                 email:$user->email
             );
         } catch (\Throwable $error) {
