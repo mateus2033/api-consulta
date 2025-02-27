@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Paciente;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PacienteFactory extends Factory
@@ -24,7 +25,8 @@ class PacienteFactory extends Factory
         return [
             'cpf' => rand(100,999) . '.' .rand(100,999)  . '.' . rand(100,999) . '-' . rand(10,99),
             'nome' => $this->faker->name(),
-            'celular' => $this->faker->phoneNumber()
+            'celular' => $this->faker->phoneNumber(),
+            'user_id' => User::exists() ? User::get()->pluck('id')->first() : User::factory()->create()->id,
         ];
     }
 }
