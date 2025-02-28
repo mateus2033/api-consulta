@@ -12,6 +12,7 @@ use App\Utils\Celular;
 use App\Utils\CPF;
 use Exception;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class AdicionarPacienteService implements IAdicionarPacienteService
 {
@@ -31,16 +32,22 @@ class AdicionarPacienteService implements IAdicionarPacienteService
         try {
             $cpf = CPF::execute($input->cpf);
             $celular = Celular::execute($input->celular);
+            $user = Auth::user();
+
+            if($user->paciente) {
+                throw new Exception("O usúario na sessão já é um paciente.", Response::HTTP_CONFLICT);
+            }
 
             $paciente = $this->pacienteRepository->findByCpf($cpf);
             if(!is_null($paciente)){
                 throw new Exception("Cpf já cadastrado.", Response::HTTP_CONFLICT);
             }
-           
+
             $paciente = $this->pacienteRepository->create([
                 'nome' => $input->nome,
                 'cpf' => $cpf,
-                'celular' => $celular
+                'celular' => $celular,
+                'user_id' => $user->id
             ]);
 
             $this->transaction->commit();

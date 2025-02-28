@@ -32,4 +32,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function paciente() 
+    {
+        return $this->hasOne(Paciente::class, 'user_id');
+    }
+
+    public function medico()
+    {
+        return $this->hasOne(Medico::class, 'user_id');
+    }
 }

@@ -22,7 +22,11 @@ class AdicionarPacienteResource extends JsonResource
             'celular' => $this->celular,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at
+            'deleted_at' => $this->deleted_at,
+            'user' => [
+                'email' => $this->user->email,
+                'type' => $this->user->type
+            ]
         ];
     } 
 }

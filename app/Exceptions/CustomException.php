@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
@@ -19,6 +20,11 @@ class CustomException
         if (is_array($error) || is_string($error)) {
             Log::info("Exceção lançada: " . json_encode($error));
             abort(response()->json(['error' => $error],$status));
+        }
+
+        if($error instanceof QueryException) {
+            Log::info("Exceção lançada: " . json_encode($error));
+            abort(response()->json(['error' => $error->getMessage()], $status));
         }
 
         if ($error instanceof Exception) {
